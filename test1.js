@@ -43,10 +43,10 @@ function redraw(){
         {
             switch(world[x][y])
             {
-                case FREE :
+                case BLOCKED :
                     canvasContext.fillStyle = "#000000";
                     break;
-                case BLOCKED :
+                case FREE :
                     canvasContext.fillStyle = "#AAAAAA";
                     break;
             }
