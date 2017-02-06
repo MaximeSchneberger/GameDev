@@ -40,7 +40,6 @@ function redraw(){
                 case 0 :
                 canvasContext.fillStyle = "#AAAAAA";
                 break;
-                //hello
             }
             canvasContext.fillRect(x*tileWidth,y*tileWidth,tileWidth,tileWidth);
         }
