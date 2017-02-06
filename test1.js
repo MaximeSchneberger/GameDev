@@ -1,6 +1,9 @@
-var worldHeight = 10;
-var worldWidth = 10;
+var worldHeight = 30;
+var worldWidth = 40;
 var tileWidth = 32;
+
+var BLOCKED = 1;
+var FREE = 0;
 
 var world = [[]];
 
@@ -15,7 +18,7 @@ function onload(){
     console.log("document loaded");
     canvas = document.getElementById("game");
     canvas.height = worldHeight * tileWidth;
-    canvas.height = worldWidth * tileWidth;
+    canvas.width = worldWidth * tileWidth;
     canvas.addEventListener("click", canvasClick, false);
     canvasContext = canvas.getContext("2d");
     createWorld();
@@ -26,7 +29,7 @@ function createWorld(){
     for(x=0;x<worldWidth;x++){
         world[x] = []
         for(y=0;y<worldHeight;y++){
-            Math.random() > 0.8 ? world[x][y] = 1 : world[x][y] = 0;
+            Math.random() > 0.8 ? world[x][y] = BLOCKED : world[x][y] = FREE;
         }
     }
     redraw();
@@ -40,10 +43,10 @@ function redraw(){
         {
             switch(world[x][y])
             {
-                case 1 :
+                case FREE :
                     canvasContext.fillStyle = "#000000";
                     break;
-                case 0 :
+                case BLOCKED :
                     canvasContext.fillStyle = "#AAAAAA";
                     break;
             }
@@ -79,19 +82,22 @@ function canvasClick(e){
     
 }
 
-function findPath()
+/*
+function findPath(start, end)
 {
-    
-}
+    var worldSize = worldHeight * worldWidth;
 
-//Math functions
+    function neighbour(x,y){
+    }
 
-function manhattanDist(c1, c2)
-{
-    Math.abs(c1[0]-c2[0])+Math.abs(c1[1]-c2[1]);
-}
+    //Math functions
+    function manhattanDist(c1, c2){
+        Math.abs(c1[0]-c2[0])+Math.abs(c1[1]-c2[1]);
+    }
 
-function euclidianDist(c1, c2)
-{
-    return Math.sqrt(Math.pow(c1[0]-c2[0],2)+(Math.pow(c1[1]-c2[1],2)));
+    function euclidianDist(c1, c2){
+        return Math.sqrt(Math.pow(c1[0]-c2[0],2)+(Math.pow(c1[1]-c2[1],2)));
+    }
+
 }
+*/
